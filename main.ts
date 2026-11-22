@@ -67,5 +67,5 @@ case 82:S[s++]=N[p++]??-1;break;
 case 83:e=S[--s]&255;break L;
 }
 }
-C(O+'/'+d,{recursive:!0});B(O+'/'+d+'/stdout.bin',U.subarray(0,o));B(O+'/'+d+'/exit.txt',e+'\n');
+P=O+'/'+d;C(P,{recursive:!0});B(P+'/stdout.bin',U.subarray(0,o));B(P+'/exit.txt',e+'\n');
 }
