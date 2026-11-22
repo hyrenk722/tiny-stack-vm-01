@@ -6,8 +6,8 @@ L:for(;;){
 if(g==1e6){e=10;break}
 if(c<0||c>=n){e=9;break}
 let q=P[c];
-if(q>83||q&&q!=52&&!(T[q]||q>15&&q<35&&q!=31)){e=5;break}
 let t=T[q]||(q>15&&q<35&&q!=31?21:0),i=t/100|0,y=t/10%10|0,z=t%10;
+if(q&&q-52&&!t){e=5;break}
 if(c+i>=n){e=9;break}
 g++;
 let x=c+1+i;
