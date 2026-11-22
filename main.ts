@@ -8,7 +8,7 @@ if(c<0|c>=n){e=9;break}
 q=P[c];
 let t=T[q]||(q>15&&q<35&&q!=31?6:0),y=t&3,z=t>>2&3;
 if(q&&q-52&&!t){e=5;break}
-if((s-y>>>0)>256-z){e=2+(s>=y);break}
+if(s<y||s-y+z>256){e=2+(s>=y);break}
 c+=1+(t>>4);
 if(c>n){e=9;break}
 s-=y;
@@ -20,12 +20,8 @@ case 3:break;
 case 4:case 6:S[s+y]=S[s];break;
 case 5:[S[s],S[s+1]]=[S[s+1],S[s]];break;
 case 7:[S[s],S[s+1],S[s+2]]=[S[s+1],S[s+2],S[s]];break;
-case 23:case 27:S[s]=q==23?-S[s]|0:~S[s];break;
-case 48:case 49:case 50:{
-let f=P.readInt16LE(c-2),w=q<49|!S[s]^q>49;
-if(w)c+=f;
-break;
-}
+case 23:case 27:S[s]=~S[s]+(q<24)|0;break;
+case 48:case 49:case 50:t=P.readInt16LE(c-2),y=q<49|!S[s]^q>49;if(y)c+=t;break;
 case 51:
 if(k==64){e=7;break}
 K[k++]=c;c=P[c-2]|P[c-1]<<8;
@@ -35,22 +31,16 @@ if(!k){e=8;break}
 c=K[--k];
 break;
 case 64:case 65:if((S[s+(q==65)]>>>0)>255){e=6;break}if(q==64)S[s]=M[S[s]]|0;else M[S[s+1]]=S[s];break;
-case 80:{
-let w=Buffer.from(''+S[s]);
-if(o+w.length>65536){e=11;break}
-U.set(w,o);o+=w.length;
-break;
-}
+case 80:t=Buffer.from(''+S[s]);if(o+t.length>65536){e=11;break}U.set(t,o);o+=t.length;break;
 case 81:
 if(o>>16){e=11;break}
 U[o++]=S[s]&255;
 break;
 case 82:S[s]=N[p++]??-1;break;
 default:{
-let a=S[s],b=S[s+1],r,h=b&31,u=a>>>0,v=b>>>0;
+let a=S[s],b=S[s+1],h=b&31,u=a>>>0,v=b>>>0;
 if(q>18&&q<23&&!b){e=4;break}
-r=[a+b|0,a-b|0,Math.imul(a,b),a/b|0,a%b|0,u/v|0,u%v|0,,a&b,a|b,a^b,,a<<h,a>>h,(a>>>h)|0,,+(a==b),+(a<b),+(u<v)][q-16];
-S[s]=r;
+S[s]=[a+b|0,a-b|0,Math.imul(a,b),a/b|0,a%b|0,u/v|0,u%v|0,,a&b,a|b,a^b,,a<<h,a>>h,(a>>>h)|0,,+(a==b),+(a<b),+(u<v)][q-16];
 }
 }
 s+=z;
