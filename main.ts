@@ -64,7 +64,7 @@ case 81:
 if(o>65535){e=11;break L}
 U[o++]=S[--s]&255;
 break;
-case 82:S[s++]=p<N.length?N[p++]:-1;break;
+case 82:S[s++]=N[p++]??-1;break;
 case 83:e=S[--s]&255;break L;
 }
 }
