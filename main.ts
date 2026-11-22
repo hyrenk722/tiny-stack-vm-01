@@ -1,5 +1,5 @@
-import{readFileSync as A,writeFileSync as B,mkdirSync as C,readdirSync as D}from'node:fs';
-let I=process.env.MAKEFUN_INPUT_DIR||'/input',O=process.env.MAKEFUN_OUTPUT_DIR||'/output',T={1:65,2:68,3:8,4:136,5:144,6:208,7:216,23:72,27:72,48:2,49:10,50:10,51:2,64:72,65:16,80:8,81:8,82:64,83:8};
+import{readFileSync as A,writeFileSync as B,mkdirSync as C,readdirSync as D}from'fs';
+let E=process.env,I=E.MAKEFUN_INPUT_DIR||'/input',O=E.MAKEFUN_OUTPUT_DIR||'/output',T={1:65,2:68,3:8,4:136,5:144,6:208,7:216,23:72,27:72,48:2,49:10,50:10,51:2,64:72,65:16,80:8,81:8,82:64,83:8};
 for(let d of D(I)){
 let P=A(I+'/'+d+'/program.bin'),N=A(I+'/'+d+'/input.bin'),n=P.length,S=[],s=0,K=[],k=0,M=[],U=new Uint8Array(65536),o=0,p=0,c=0,g=0,e;
 L:for(;;){
