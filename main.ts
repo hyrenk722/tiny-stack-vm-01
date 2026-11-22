@@ -12,7 +12,7 @@ if(c+i>=n){e=9;break}
 g++;
 if(s<y||s-y+z>256){e=s<y?2:3;break}
 c+=1+i;
-if(q>15&&q<35&&q!=23&&q!=27){
+if(t==80){
 let a=S[s-2],b=S[s-1],r,h=b&31,u=a>>>0,v=b>>>0;
 if(q>18&&q<23&&!b){e=4;break L}
 r=q==16?a+b|0:q==17?a-b|0:q==18?Math.imul(a,b):q==19?a/b|0:q==20?a%b|0:q==21?u/v|0:q==22?u%v|0:q==24?a&b:q==25?a|b:q==26?a^b:q==28?a<<h:q==29?a>>h:q==30?(a>>>h)|0:q==32?+(a==b):q==33?+(a<b):+(u<v);
