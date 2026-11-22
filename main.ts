@@ -11,8 +11,7 @@ let t=T[q]||(q>15&&q<35&&q!=31?21:0),i=t/100|0,y=t/10%10|0,z=t%10;
 if(c+i>=n){e=9;break}
 g++;
 let x=c+1+i;
-if(s<y){e=2;break}
-if(s-y+z>256){e=3;break}
+if(s<y||s-y+z>256){e=s<y?2:3;break}
 c=x;
 if(q>15&&q<35&&q!=23&&q!=27){
 let a=S[s-2],b=S[s-1],r=0;
