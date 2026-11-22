@@ -29,8 +29,7 @@ case 5:[S[s-1],S[s-2]]=[S[s-2],S[s-1]];break;
 case 7:[S[s-3],S[s-2],S[s-1]]=[S[s-2],S[s-1],S[s-3]];break;
 case 23:case 27:S[s-1]=q==23?-S[s-1]|0:~S[s-1];break;
 case 48:case 49:case 50:{
-let f=P.readInt16LE(c-2),w=1;
-if(q!=48){let v=S[--s];w=q==49?v==0:v!=0}
+let f=P.readInt16LE(c-2),w=q==48||!S[--s]^q==50;
 if(w)c+=f;
 break;
 }
