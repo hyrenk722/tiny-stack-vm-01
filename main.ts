@@ -1,15 +1,15 @@
 import{readFileSync as A,writeFileSync as B,mkdirSync as C,readdirSync as D}from'fs';
-let E=process.env,I=E.MAKEFUN_INPUT_DIR||'/input',O=E.MAKEFUN_OUTPUT_DIR||'/output',T={1:65,2:68,3:8,4:136,5:144,6:208,7:216,23:72,27:72,48:2,49:10,50:10,51:2,64:72,65:16,80:8,81:8,82:64,83:8},d,q;
+let E=process.env,I=E.MAKEFUN_INPUT_DIR||'/input',O=E.MAKEFUN_OUTPUT_DIR||'/output',T={1:20,2:68,3:1,4:9,5:10,6:14,7:15,23:5,27:5,48:32,49:33,50:33,51:32,64:5,65:2,80:1,81:1,82:4,83:1},d,q;
 for(d of D(I)){
 let j=I+'/'+d,P=A(j+'/program.bin'),N=A(j+'/input.bin'),n=P.length,S=[],s=0,K=[],k=0,M=[],U=Buffer.alloc(65536),o=0,p=0,c=0,g=1e6,e;
 for(;e==null;){
 if(--g<0){e=10;break}
 if(c<0|c>=n){e=9;break}
 q=P[c];
-let t=T[q]||(q>15&&q<35&&q!=31?80:0),y=t>>3&7,z=t>>6;
+let t=T[q]||(q>15&&q<35&&q!=31?6:0),y=t&3,z=t>>2&3;
 if(q&&q-52&&!t){e=5;break}
 if((s-y>>>0)>256-z){e=2+(s>=y);break}
-c+=1+(t&7);
+c+=1+(t>>4);
 if(c>n){e=9;break}
 s-=y;
 switch(q){
