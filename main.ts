@@ -10,9 +10,8 @@ let t=T[q]||(q>15&&q<35&&q!=31?21:0),i=t/100|0,y=t/10%10|0,z=t%10;
 if(q&&q-52&&!t){e=5;break}
 if(c+i>=n){e=9;break}
 g++;
-let x=c+1+i;
 if(s<y||s-y+z>256){e=s<y?2:3;break}
-c=x;
+c+=1+i;
 if(q>15&&q<35&&q!=23&&q!=27){
 let a=S[s-2],b=S[s-1],r;
 if(q>18&&q<23&&!b){e=4;break L}
@@ -22,8 +21,8 @@ continue;
 }
 switch(q){
 case 0:e=0;break L;
-case 1:S[s++]=(P[x-1]<<24)>>24;break;
-case 2:S[s++]=P[x-4]|P[x-3]<<8|P[x-2]<<16|P[x-1]<<24;break;
+case 1:S[s++]=(P[c-1]<<24)>>24;break;
+case 2:S[s++]=P[c-4]|P[c-3]<<8|P[c-2]<<16|P[c-1]<<24;break;
 case 3:s--;break;
 case 4:S[s]=S[s-1];s++;break;
 case 5:{let v=S[s-1];S[s-1]=S[s-2];S[s-2]=v;break}
@@ -32,14 +31,14 @@ case 7:{let v=S[s-3];S[s-3]=S[s-2];S[s-2]=S[s-1];S[s-1]=v;break}
 case 23:S[s-1]=-S[s-1]|0;break;
 case 27:S[s-1]=~S[s-1];break;
 case 48:case 49:case 50:{
-let f=(P[x-2]|P[x-1]<<8)<<16>>16,w=1;
+let f=(P[c-2]|P[c-1]<<8)<<16>>16,w=1;
 if(q!=48){let v=S[--s];w=q==49?v==0:v!=0}
-if(w)c=x+f;
+if(w)c+=f;
 break;
 }
 case 51:
 if(k==64){e=7;break L}
-K[k++]=x;c=P[x-2]|P[x-1]<<8;
+K[k++]=c;c=P[c-2]|P[c-1]<<8;
 break;
 case 52:
 if(!k){e=8;break L}
