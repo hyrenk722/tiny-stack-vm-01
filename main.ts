@@ -25,9 +25,9 @@ case 1:S[s++]=P.readInt8(c-1);break;
 case 2:S[s++]=P.readInt32LE(c-4);break;
 case 3:s--;break;
 case 4:S[s]=S[s-1];s++;break;
-case 5:{let v=S[s-1];S[s-1]=S[s-2];S[s-2]=v;break}
+case 5:[S[s-1],S[s-2]]=[S[s-2],S[s-1]];break;
 case 6:S[s]=S[s-2];s++;break;
-case 7:{let v=S[s-3];S[s-3]=S[s-2];S[s-2]=S[s-1];S[s-1]=v;break}
+case 7:[S[s-3],S[s-2],S[s-1]]=[S[s-2],S[s-1],S[s-3]];break;
 case 23:S[s-1]=-S[s-1]|0;break;
 case 27:S[s-1]=~S[s-1];break;
 case 48:case 49:case 50:{
