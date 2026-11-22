@@ -1,12 +1,12 @@
 import{readFileSync as A,writeFileSync as B,mkdirSync as C,readdirSync as D}from'node:fs';
-let I=process.env.MAKEFUN_INPUT_DIR||'/input',O=process.env.MAKEFUN_OUTPUT_DIR||'/output',T={1:101,2:401,3:10,4:12,5:22,6:23,7:33,23:11,27:11,48:200,49:210,50:210,51:200,64:11,65:20,80:10,81:10,82:1,83:10};
+let I=process.env.MAKEFUN_INPUT_DIR||'/input',O=process.env.MAKEFUN_OUTPUT_DIR||'/output',T={1:65,2:68,3:8,4:136,5:144,6:208,7:216,23:72,27:72,48:2,49:10,50:10,51:2,64:72,65:16,80:8,81:8,82:64,83:8};
 for(let d of D(I)){
 let P=A(I+'/'+d+'/program.bin'),N=A(I+'/'+d+'/input.bin'),n=P.length,S=[],s=0,K=[],k=0,M=[],U=new Uint8Array(65536),o=0,p=0,c=0,g=0,e;
 L:for(;;){
 if(g==1e6){e=10;break}
 if(c<0||c>=n){e=9;break}
 let q=P[c];
-let t=T[q]||(q>15&&q<35&&q!=31?21:0),i=t/100|0,y=t/10%10|0,z=t%10;
+let t=T[q]||(q>15&&q<35&&q!=31?80:0),i=t&7,y=t>>3&7,z=t>>6;
 if(q&&q-52&&!t){e=5;break}
 if(c+i>=n){e=9;break}
 g++;
