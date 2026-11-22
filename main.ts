@@ -21,8 +21,8 @@ continue;
 }
 switch(q){
 case 0:e=0;break L;
-case 1:S[s++]=(P[c-1]<<24)>>24;break;
-case 2:S[s++]=P[c-4]|P[c-3]<<8|P[c-2]<<16|P[c-1]<<24;break;
+case 1:S[s++]=P.readInt8(c-1);break;
+case 2:S[s++]=P.readInt32LE(c-4);break;
 case 3:s--;break;
 case 4:S[s]=S[s-1];s++;break;
 case 5:{let v=S[s-1];S[s-1]=S[s-2];S[s-2]=v;break}
@@ -31,7 +31,7 @@ case 7:{let v=S[s-3];S[s-3]=S[s-2];S[s-2]=S[s-1];S[s-1]=v;break}
 case 23:S[s-1]=-S[s-1]|0;break;
 case 27:S[s-1]=~S[s-1];break;
 case 48:case 49:case 50:{
-let f=(P[c-2]|P[c-1]<<8)<<16>>16,w=1;
+let f=P.readInt16LE(c-2),w=1;
 if(q!=48){let v=S[--s];w=q==49?v==0:v!=0}
 if(w)c+=f;
 break;
